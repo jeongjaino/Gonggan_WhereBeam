@@ -2,6 +2,7 @@ package com.example.wherebeam
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.activity.viewModels
 import com.example.wherebeam.databinding.ActivityMainBinding
 import com.example.wherebeam.data.SensorData
@@ -15,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -27,15 +29,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        getValueFromFirebase()
+        getSensorValue()
+
+        initUI()
     }
-    private fun getValueFromFirebase(){
+    private fun getSensorValue(){
 
         sensorStateViewModel.state.observe(this){
             binding.humidityText.text = it.sensorData.humidity.toString()
-            binding.temTextView.text = it.sensorData.temperature.toString()
+            binding.tempTextView.text = it.sensorData.temperature.toString()
             binding.ecText.text = it.sensorData.ec.toString()
             binding.co2Text.text = it.sensorData.co2.toString()
         }
     }
+    private fun initUI(){
+        val currentTime = SystemClock.elapsedRealtime()
+        val sdf = SimpleDateFormat("yyyy.MM.dd (E) a HH:mm")
+        binding.currentTimeTextVIew.text = sdf.format(currentTime)
+    }
+
 }
