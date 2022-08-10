@@ -36,10 +36,10 @@ class MainActivity : AppCompatActivity() {
     private fun getSensorValue(){
 
         sensorStateViewModel.state.observe(this){
-            binding.humidityText.text = it.sensorData.humidity.toString()
-            binding.tempTextView.text = it.sensorData.temperature.toString()
-            binding.ecText.text = it.sensorData.ec.toString()
-            binding.co2Text.text = it.sensorData.co2.toString()
+            binding.humidityText.text = it.sensorData.humidity.toString() + "%"
+            binding.tempTextView.text = it.sensorData.temperature.toString() + "°C"
+            binding.ecText.text = it.sensorData.ec.toString() + "dS/m"
+            binding.co2Text.text = it.sensorData.co2.toString() + "ppm"
         }
     }
     private fun initUI(){
