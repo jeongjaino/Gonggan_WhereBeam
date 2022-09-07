@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/sensorStateFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.wherebeam.presentation.ui.MainActivity"
+        android:label="fragment_sensor_state"
+        tools:layout="@layout/fragment_sensor_state" />
+    <fragment
+        android:id="@+id/ledControlFragment"
+        android:name="com.example.wherebeam.presentation.ui.led_control.LedControlFragment"
+        android:label="fragment_led_control"
+        tools:layout="@layout/fragment_led_control" >
+        <action
+            android:id="@+id/action_ledControlFragment_to_sensorStateFragment"
+            app:destination="@id/sensorStateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/phControlFragment"
+        android:name="com.example.wherebeam.presentation.ui.ph_control.PhControlFragment"
+        android:label="fragment_ph_control"
+        tools:layout="@layout/fragment_ph_control" >
+        <action
+            android:id="@+id/action_phControlFragment_to_sensorStateFragment"
+            app:destination="@id/sensorStateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sensorStateFragment"
+        android:name="com.example.wherebeam.presentation.ui.sensor_state.SensorStateFragment"
+        android:label="SensorStateFragment" >
+        <action
+            android:id="@+id/action_sensorStateFragment_to_ledControlFragment"
+            app:destination="@id/ledControlFragment" />
+        <action
+            android:id="@+id/action_sensorStateFragment_to_phControlFragment"
+            app:destination="@id/phControlFragment" />
+    </fragment>
+</navigation>
