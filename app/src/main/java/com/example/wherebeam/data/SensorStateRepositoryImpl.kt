@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.callbackFlow
 class SensorStateRepositoryImpl: SensorStateRepository {
 
     override suspend fun getSensorState() :Flow<SensorData?> = callbackFlow {
-        fireStore.collection(FirestoreCollection.smartFarmKey).document("Room_1")
+        fireStore.collection(FirestoreCollection.smartFarmKey).document("SensorValue")
             .addSnapshotListener{ snapShot, e ->
                 if (snapShot != null && snapShot.exists()) {
                     val sensorStateData : SensorStateDto? = snapShot.toObject(SensorStateDto::class.java)
