@@ -79,4 +79,7 @@ dependencies {
     implementation "androidx.navigation:navigation-runtime-ktx:$nav_version"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    //Switch Button (open lib)
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
 }
