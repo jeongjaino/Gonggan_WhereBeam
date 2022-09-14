@@ -7,6 +7,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 class SensorStateRepositoryImpl: SensorStateRepository {
@@ -17,12 +18,18 @@ class SensorStateRepositoryImpl: SensorStateRepository {
                 if (snapShot != null && snapShot.exists()) {
                     val sensorStateData : SensorStateDto? = snapShot.toObject(SensorStateDto::class.java)
                     sensorStateData?.let{
-                        trySend(sensorStateData.toSensorState())
+                        launch {
+                            trySend(sensorStateData.toSensorState())
+                        }
                     } ?: run{
-                        trySend(null)
+                        launch {
+                            trySend(null)
+                        }
                     }
                 }else{
-                    trySend(null)
+                    launch {
+                        trySend(null)
+                    }
                 }
             }
         awaitClose()
