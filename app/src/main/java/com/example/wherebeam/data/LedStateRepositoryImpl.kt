@@ -22,7 +22,8 @@ class LedStateRepositoryImpl : LedStateRepository {
                 .addValueEventListener(object: ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         launch {
-                            trySend(LedState(true))
+                            val data = snapshot.value as Boolean
+                            trySend(LedState(data))
                         }
                     }
                     override fun onCancelled(error: DatabaseError) {
@@ -39,7 +40,7 @@ class LedStateRepositoryImpl : LedStateRepository {
 
     override suspend fun setLedState(state: Boolean) : Boolean =
         suspendCancellableCoroutine { cont ->
-            database.reference.child(smartFarmKey).child("LedControl/trigger")
+            database.reference.child(smartFarmKey).child("LedControl")
                 .setValue(LedState(state))
                 .addOnSuccessListener {
                     cont.resume(true)
