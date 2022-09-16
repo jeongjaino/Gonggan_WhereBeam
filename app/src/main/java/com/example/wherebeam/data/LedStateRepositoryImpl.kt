@@ -1,7 +1,7 @@
 package com.example.wherebeam.data
 
 import com.example.wherebeam.domain.LedStateRepository
-import com.example.wherebeam.utils.FirebaseProvide.fireStore
+import com.example.wherebeam.utils.FirebaseManager.fireStore
 import com.example.wherebeam.utils.FirestoreCollection
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
