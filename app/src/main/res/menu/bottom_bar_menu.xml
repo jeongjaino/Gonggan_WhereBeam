@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/sensorStateFragment"
-        android:icon="@drawable/gonggan_icon"
+        android:icon="@drawable/ic_baseline_camera_indoor_24"
         android:enabled="true"
         android:title="모니터링" />
     <item
         android:id="@+id/ledControlFragment"
-        android:icon="@drawable/gonggan_icon"
+        android:icon="@drawable/ic_baseline_lightbulb_24"
         android:enabled="true"
         android:title="LED 제어"/>
     <item
         android:id="@+id/phControlFragment"
-        android:icon="@drawable/gonggan_icon"
+        android:icon="@drawable/ic_baseline_water_damage_24"
         android:enabled="true"
         android:title="양액 제어" />
 </menu>
